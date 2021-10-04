@@ -1,0 +1,194 @@
+<head>
+
+
+  <script>
+$(document).ready(function(){
+  $('.owl-carousel').owlCarousel({
+    loop:true, //Зацикливаем слайдер
+    margin:30, //Отступ от картино если выводите больше 1
+    nav:false, //Отключил навигацию
+    autoplay:true, //Автозапуск слайдера
+    smartSpeed:1000, //Время движения слайда
+    autoplayTimeout:10000, //Время смены слайда
+    responsive:{ //Адаптация в зависимости от разрешения экрана
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:5
+        }
+    }
+  });
+});
+</script>
+
+</head>
+
+
+<body>
+  <div id="carouselExampleControls" class="carousel slide position2" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @carousel_active.each do |image| %>
+        <div class="carousel-item active">
+          <%= image_tag(image.image, class:'d-block w-100')%>
+
+        </div>
+      <% end %>
+      <% @carousel.each do |image| %>
+        <div class="carousel-item">
+          <%= image_tag(image.image, class:'d-block w-100')%>
+        </div>
+      <% end %>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div>
+<br>
+      <div class="shadow-lg p-3 mb-5 bg-white rounded container">
+
+          <div class="w-100 p-3 page-header text-center">
+            <% @name.each do |name| %>
+              <h1 style="color:  #AC172B">
+                <%= name.ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+                <%= name.ru if params[:locale] == 'ru' %>
+                <%= name.en if params[:locale] == 'en' %>
+                <%= name.tm if params[:locale] == 'tm' %>
+              </h1>
+            <% end %>
+          </div>
+
+      </div>
+
+  </div>
+  <div>
+
+      <div class="shadow-lg p-3 mb-5 rounded" id="p1" style="background-image: url(/1.jpg); height: 708px;">
+        <div style="background-color: rgba(255, 255, 255, .6); height: 675px;" class="position1">
+            <div class="w-50 p-3 page-header container ms-1">
+              <% @about.each do |about| %>
+                <b>
+                  <%= simple_format about.title_ru, :style => "font-size: 1.75rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+                  <%= simple_format about.title_ru, :style => "font-size: 1.75rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] == 'ru' %>
+                  <%= simple_format about.title_en, :style => "font-size: 1.75rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] == 'en' %>
+                  <%= simple_format about.title_tm, :style => "font-size: 1.75rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] == 'tm' %>
+                </b>
+                  <%= simple_format about.text_ru, :style => "font-size: 0.9rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+                  <%= simple_format about.text_ru, :style => "font-size: 0.9rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] == 'ru' %>
+                  <%= simple_format about.text_en, :style => "font-size: 0.9rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] == 'en' %>
+                  <%= simple_format about.text_tm, :style => "font-size: 0.9rem; font-family: 'Jost', sans-serif; font-weight: bold" if params[:locale] == 'tm' %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="container position2" id="p2">
+    <h1 style="color: white">
+      <%= t('layout.sertificate')%>
+    </h1>
+      <div class="row row-cols-4">
+        <% @sertificate.each do |sertificate|%>
+          <div class="col">
+            <div class="shadow p-2 mb-5 bg-body rounded" style="width: 170px; height: 283px">
+              <%= image_tag(sertificate.image, style:'width:155px; height: 268px') %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+  </div>
+  <div class="container-fluid position2" id="p3">
+    <h1 style="color: white">
+      <%= t('layout.contacts')%>
+    </h1>
+      <div class="shadow-lg p-3 mb-5 bg-white rounded row">
+        <div class="col-6 rounded" style="background-color: #eee;">
+          <% @contact_detail.each do |item| %>
+            <h3>
+              <%= t('word.address') + item.address_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+              <%= t('word.address') + item.address_ru if params[:locale] == 'ru' %>
+              <%= t('word.address') + item.address_en if params[:locale] == 'en' %>
+              <%= t('word.address') + item.address_tm if params[:locale] == 'tm' %>
+            </h3>
+            </br>
+            <h3><%= t('word.phone') + item.phone %></h3>
+            </br>
+            <h3><%= t('word.fax') + item.faks %></h3>
+            </br>
+            <h3><%= t('word.email')%><%= mail_to "#{item.email1}" %>|<%= mail_to "#{item.email1}" %></h3>
+          <% end %>
+          </br>
+
+          <center>
+          <%= link_to '#', :class => "btn btn-success open-popup", :style => "text-decoration: none;" do %>
+            <%= t('word.write')%>
+          <% end %>
+          </center>
+        </div>
+        <div id="map" class="map col-6 rounded">
+            <script src="https://api-maps.yandex.ru/2.1/?apikey=<%= @key %>&lang=ru_RU" type="text/javascript"></script>
+
+            <script async src="/js/ymaps.js"></script>
+          </div>
+
+          <div class="popup-bg" style="z-index: 9999;">
+              <div class="popup rounded border border-success" style="background-color: #AC172B;">
+                  <img class="close-popup" src="images/close.png" alt="">
+
+                    <div id="contact" style="width: 1075px;">
+
+                      <%= render 'contact_form' %>
+                    </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="container-fluid">
+          <div class="shadow-lg p-3 mb-5 rounded" style="background-color: #5F9EA0;">
+            <div class="owl-carousel text-white slide-text rounded">
+              <% @products.each do |product| %>
+                <div class="rounded" style="background-color: transparent;">
+                  <center>
+                    <%= link_to product_path(product), :class => "btn btn-success", :style => "text-decoration: none;" do %>
+                      <%= image_tag(product.image, style:'width: 200px; height:300px;', class:'rounded')%>
+                      <%= product.name %>
+                    <% end %>
+
+
+
+                  </center>
+                </div>
+                <% end %>
+              </div>
+              <center>
+              <%= link_to products_path, :class => "btn btn-success", :style => "text-decoration: none;" do %>
+                <%= t('layout.production') %>
+              <% end %>
+              </center>
+            </div>
+          </div>
+
+
+
+
+            <script src="/js/owl.carousel.js"></script>
+            <script src="/js/main.js"></script>
+
+
+
+
+
+
+</body>

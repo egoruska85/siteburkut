@@ -1,0 +1,30 @@
+<!-- app/views/home/_contact_form.html.erb -->
+
+<%= form_for @contact, url: home_index_path, remote: true do |f| %>
+    <div class="col-md-6 text-white">
+        <%= f.label t('form.email') %></br>
+        <%= f.text_field  :name, required: true, class: "form-control form-control-sm", :placeholder => t('form.email') %></br>
+
+
+
+      <%= f.label t('form.message') %></br>
+      <%= f.text_area :message, rows: 8, cols: 80, required: true, class: "form-control",
+                        placeholder: t('form.message') %></br>
+
+
+      <div class= "hidden">
+        <%= f.label t('form.email') %></br>
+        <%= f.text_field :email, required: true, class: "form-control form-control-sm", :placeholder => t('form.email'), :value => "egoruska85@mail.ru" %></br>
+
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname, :hint => 'Leave this field blank!', class: "form-control form-control-sm" %>
+      </div>
+      <center>
+      <%= f.submit t('word.send'), class: 'btn btn-success' %>
+      </center>
+    </div>
+  <% end %>
+  </center>
+  <div class="container" id="flash-message" style="width: 500px; margin-left: 20px;">
+    <%= render 'flash' %>
+  </div>

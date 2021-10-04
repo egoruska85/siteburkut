@@ -1,0 +1,43 @@
+</br>
+<div class="text-white">
+  <h1 class="position2"><%= t('layout.production') %></h1>
+</div>
+
+
+<div class="position2 container">
+
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <% @products.each do |product| %>
+          <div class="col width: 18rem; shadow-lg p-3 mb-5 rounded border border-light">
+            <center>
+              <%= link_to product_path(product), :class => "btn btn-success", :style => "text-decoration: none;" do %>
+                <%= image_tag(product.image, class:'card-img-top production')%>
+              <% end %>
+            </center>
+            <br>
+            <center>
+            <div class="card-body">
+              <%= link_to product_path(product), :class => "btn btn-success", :style => "text-decoration: none;" do %>
+                <%= product.name %>
+              <% end %>
+              <br>
+              <p class="card-text text-white" style="font-size: 17px;">
+                <strong>
+                  <%= product.text_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+                  <%= product.text_ru if params[:locale] == 'ru' %>
+                  <%= product.text_en if params[:locale] == 'en' %>
+                  <%= product.text_tm if params[:locale] == 'tm' %>
+                </strong>
+              </p>
+            </div>
+            </center>
+            <br><br><br>
+          </div>
+        <% end %>
+      </div>
+
+
+
+
+</div>

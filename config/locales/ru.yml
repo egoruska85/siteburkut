@@ -1,0 +1,21 @@
+ru:
+  layout:
+    production: "ПРОДУКЦИЯ"
+    about: "О КОМПАНИИ"
+    sertificate: "СЕРТИФИКАТЫ"
+    contacts: "НАШИ КОНТАКТЫ"
+  word:
+    address: "Адрес: "
+    phone: "Тел.: "
+    fax: "Факс: "
+    email: "Эл. почта: "
+    write: "НАПИШИТЕ НАМ"
+    send: "ОТПРАВИТЬ"
+  form:
+    email: "E-mail"
+    name: "Ваше имя"
+    message: "Ваше сообщение"
+  message:
+    sended: "Ваше сообщение отправлено. Вы можете закрыть окошко"
+  product:
+    gallery: "ИЗОБРАЖЕНИЯ"

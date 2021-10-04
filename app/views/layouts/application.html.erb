@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% @name.each do |name| %>
+      <%= name.ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+      <%= name.ru if params[:locale] == 'ru' %>
+      <%= name.en if params[:locale] == 'en' %>
+      <%= name.tm if params[:locale] == 'tm' %>
+    <% end %>
+
+
+
+    </title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'style', media: 'all' %>
+
+
+
+
+
+  <%= favicon_link_tag asset_path('/images/logo_0.png') %>
+  </head>
+
+  <body>
+
+    <style>
+
+
+</style>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #AC172B; height: 100px; z-index: 99;">
+  <div class="container-fluid">
+    <div class="container">
+      <%= link_to root_path, :class => "navbar-brand" do %>
+        <% @logo.each do |logo| %>
+
+          <%= image_tag(logo.image, style:'width:165px; height: 120px; margin-top: 30px')%>
+
+        <% end %>
+      <% end %>
+    </div>
+  <div class="navbar navbar-expand-lg navbar-light" style="z-index: 999; background: #AC172B; margin-top: -165px; height: 40px; margin-left: 160px">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-top: -7px;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background: #AC172B; margin-top: 55px;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+
+          <span class="badge">
+            <%= link_to products_path, :class => "navi" do %>
+
+              <%= t('layout.production') %>
+            <% end %>
+          </span>
+
+        </li>
+        <li class="nav-item">
+          <span class="badge">
+            <%= link_to root_path + '#p1', :class => "navi" do %>
+
+              <%= t('layout.about') %>
+            <% end %>
+          </span>
+        </li>
+        <li class="nav-item">
+          <span class="badge">
+            <%= link_to root_path + '#p2', :class => "navi" do %>
+
+              <%= t('layout.sertificate') %>
+            <% end %>
+          </span>
+        </li>
+        <li class="nav-item">
+          <span class="badge">
+            <%= link_to root_path + '#p3', :class => "navi" do %>
+
+              <%= t('layout.contacts')%>
+            <% end %>
+          </span>
+        </li>
+      </ul>
+
+        <%= link_to url_for(locale: :tm), :class => "nav-link ml-auto" do %>
+          <%= image_tag "/images/tm.png", :class => "flag" %>
+        <% end %>
+        <%= link_to url_for(locale: :en), :class => "nav-link ml-auto" do %>
+          <%= image_tag "/images/en.png", :class => "flag" %>
+        <% end %>
+        <%= link_to url_for(locale: :ru), :class => "nav-link ml-auto" do %>
+          <%= image_tag "/images/ru.png", :class => "flag" %>
+        <% end %>
+
+
+    </div>
+
+</nav>
+
+<div id="toTop" style="z-index: 999999999" class="rounded">
+  <svg xmlns="/images/arrow-bar-up.svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
+  </svg>
+</div>
+
+
+    <%= yield %>
+<br>
+    <nav class="navbar navbar-dark" style="background-color: #AC172B; z-index: 9999; height: 50px">
+      <div class="mx-auto order-0">
+      <h7 class="navbar-brand mx-auto">
+
+        <b>
+          <% @name.each do |name| %>
+            <h6 style="color: white">
+              &copy; <%= name.ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+              <%= name.ru if params[:locale] == 'ru' %>
+              <%= name.en if params[:locale] == 'en' %>
+              <%= name.tm if params[:locale] == 'tm' %><%= @time.year %>
+            </h6>
+          <% end %>
+        </b>
+
+      </h7>
+      </div>
+    </nav>
+
+  </body>
+</html>
+
+
+<script type="text/javascript">
+
+$(function() {
+
+$(window).scroll(function() {
+
+if($(this).scrollTop() != 0) {
+
+$('#toTop').fadeIn();
+
+} else {
+
+$('#toTop').fadeOut();
+
+}
+
+});
+
+$('#toTop').click(function() {
+
+$('body,html').animate({scrollTop:0},800);
+
+});
+
+});
+
+</script>

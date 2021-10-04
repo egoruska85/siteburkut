@@ -1,0 +1,21 @@
+tm:
+  layout:
+    production: "ÖNÜMLER"
+    about: "BIZ HAKDA"
+    sertificate: "ŞAHADATNAMALARY"
+    contacts: "BIZIňKILER ARAGATNAŞYKLARYMYZ"
+  word:
+    address: "Salgysy: "
+    phone: "Tel.: "
+    fax: "Faks: "
+    email: "E-mail: "
+    write: "BIZI RAZY"
+    send: "IBER"
+  form:
+    email: "E-mail"
+    name: "Biz ady"
+    message: "Habaryňyz"
+  message:
+    sended: "Hatyňyz ugradyldy. Penjiräni ýapyp bilersiňiz"
+  product:
+    gallery: "SURATLAR"

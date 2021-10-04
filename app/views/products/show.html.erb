@@ -1,0 +1,94 @@
+</br>
+<div class="text-white">
+  <h1 class="position2"><%= t('layout.production') %></h1>
+</div>
+<div class="text-white">
+  <h3><%= @product.name %></h3>
+</div>
+<div class="container-fluid row">
+  <div class="col-6">
+    <center>
+      <div class="shadow-lg p-3 mb-5 rounded" style="width: 500px; height:600px; background-color: brown;">
+
+          <%= image_tag(@product.image, style:'width: 470px; height: 567px;') %>
+
+      </div>
+    </center>
+  </div>
+  <div class="col-6">
+    <div class="shadow-lg p-3 mb-5 rounded" style="width: 800px; height:600px; background-color: brown;">
+      <div style="background: white; width: 770px; height: 567px;">
+
+          <% @product.comments.each do |comment| %>
+            <center>
+              <h2>
+                <%= comment.title_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+                <%= comment.title_ru if params[:locale] == 'ru' %>
+                <%= comment.title_en if params[:locale] == 'en' %>
+                <%= comment.title_tm if params[:locale] == 'tm' %>
+              </h2>
+            </center>
+          <% end %>
+          <% @product.comments.each do |comment| %>
+            <center>
+              <%= simple_format comment.text_ru if params[:locale] != true and params[:locale] != 'en' and params[:locale] != 'tm' and params[:locale] != 'ru' %>
+              <%= simple_format comment.text_ru if params[:locale] == 'ru' %>
+              <%= simple_format comment.text_en if params[:locale] == 'en' %>
+              <%= simple_format comment.text_tm if params[:locale] == 'tm' %>
+            </center>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<div class="accordion container-fluid" id="accordionExample" style="z-index: 99;">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+            <%= t('product.gallery') %>
+
+        </button>
+
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body" style="height: absolute;">
+        <center>
+
+          <% comment.images.each do |image| %>
+            <%= link_to image do %>
+              <%= image_tag(image, class:"productsimages rounded open-popup") %>
+            <% end %>
+          <% end %>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

@@ -19,7 +19,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= stylesheet_link_tag 'style', media: 'all' %>
+<script type="text/javascript">
+  $(document).on("page:fetch", function(){
+    $(".spinner").show();
+  });
 
+  $(document).on("page:receive", function(){
+    $(".spinner").hide();
+  });
+</script>
 
 
 
@@ -36,7 +44,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #AC172B; height: 100px; z-index: 99;">
   <div class="container-fluid">
-    <div class="container">
+
       <%= link_to root_path, :class => "navbar-brand" do %>
         <% @logo.each do |logo| %>
 
@@ -44,15 +52,26 @@
 
         <% end %>
       <% end %>
-    </div>
-  <div class="navbar navbar-expand-lg navbar-light" style="z-index: 999; background: #AC172B; margin-top: -165px; height: 40px; margin-left: 160px">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-top: -7px;">
+      <div style="margin-bottom: 50px">
+      <%= link_to url_for(locale: :tm), :class => "navi" do %>
+        <%= image_tag "/images/tm.png", :class => "flag" %>
+      <% end %>
+      <%= link_to url_for(locale: :en), :class => "navi" do %>
+        <%= image_tag "/images/en.png", :class => "flag" %>
+      <% end %>
+      <%= link_to url_for(locale: :ru), :class => "navi" do %>
+        <%= image_tag "/images/ru.png", :class => "flag" %>
+      <% end %>
+      </div>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-top: -190px; margin-left: 760px;">
       <span class="navbar-toggler-icon"></span>
     </button>
-  </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background: #AC172B; margin-top: 55px;">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background: #AC172B; margin-top: 55px">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
 
@@ -88,21 +107,17 @@
             <% end %>
           </span>
         </li>
+
       </ul>
 
-        <%= link_to url_for(locale: :tm), :class => "nav-link ml-auto" do %>
-          <%= image_tag "/images/tm.png", :class => "flag" %>
-        <% end %>
-        <%= link_to url_for(locale: :en), :class => "nav-link ml-auto" do %>
-          <%= image_tag "/images/en.png", :class => "flag" %>
-        <% end %>
-        <%= link_to url_for(locale: :ru), :class => "nav-link ml-auto" do %>
-          <%= image_tag "/images/ru.png", :class => "flag" %>
-        <% end %>
 
 
     </div>
 
+
+
+
+</div>
 </nav>
 
 <div id="toTop" style="z-index: 999999999" class="rounded">

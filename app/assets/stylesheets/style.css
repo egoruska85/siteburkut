@@ -182,8 +182,8 @@ a:hover {
 }
 .flag {
   transition: 1s;
-  width: 20px;
-  -webkit-transform-origin: right;
+  width: 25px;
+  -webkit-transform-origin: center;
   transform: scale(0.9);
   z-index: 1;
 }
@@ -204,7 +204,7 @@ background:#00FFFF;
 text-align:center;
 padding:5px;
 position:fixed;
-bottom:10px; /* отступ кнопки от нижнего края страницы*/
+bottom:50px; /* отступ кнопки от нижнего края страницы*/
 right:10px;
 cursor:pointer;
 display:none;
@@ -228,4 +228,67 @@ font-size:11px;
   border: 3px solid brown;
   margin-top: 50px;
 
+}
+.sert {
+  transition: 1s;width: 170px;
+  -webkit-transform-origin: bottom;
+  transform: scale(0.9);
+  z-index: 999999999999;
+  border: 4px solid brown;
+
+}
+.sert:hover {
+  transform: scale(2.8);
+  z-index: 1;
+  border: 5px solid brown;
+
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:100%;
+}
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid green;
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: red;
+  animation: loader-inner 2s infinite ease-in;
+}
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
 }

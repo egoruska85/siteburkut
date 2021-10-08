@@ -29,6 +29,7 @@ $(document).ready(function(){
 
 
 <body>
+
   <div id="carouselExampleControls" class="carousel slide position2" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% @carousel_active.each do |image| %>
@@ -54,7 +55,10 @@ $(document).ready(function(){
     </button>
   </div>
   <div>
-<br>
+    </br>
+<div class="loader-wrapper fixed-top">
+  <span class="loader"><span class="loader-inner"></span></span>
+</div>
       <div class="shadow-lg p-3 mb-5 bg-white rounded container">
 
           <div class="w-100 p-3 page-header text-center">
@@ -100,9 +104,9 @@ $(document).ready(function(){
       <div class="row row-cols-4">
         <% @sertificate.each do |sertificate|%>
           <div class="col">
-            <div class="shadow p-2 mb-5 bg-body rounded" style="width: 170px; height: 283px">
-              <%= image_tag(sertificate.image, style:'width:155px; height: 268px') %>
-            </div>
+
+              <%= image_tag(sertificate.image, class:"sert") %>
+
           </div>
         <% end %>
       </div>
@@ -156,7 +160,7 @@ $(document).ready(function(){
       </div>
 
         <div class="container-fluid">
-          <div class="shadow-lg p-3 mb-5 rounded" style="background-color: #5F9EA0;">
+          <div class="shadow-lg p-3 mb-5 rounded" style="background-color: #FFF5EE;">
             <div class="owl-carousel text-white slide-text rounded">
               <% @products.each do |product| %>
                 <div class="rounded" style="background-color: transparent;">
@@ -187,7 +191,11 @@ $(document).ready(function(){
             <script src="/js/main.js"></script>
 
 
-
+            <script>
+                $(window).on("load",function(){
+                  $(".loader-wrapper").fadeOut("slow");
+                });
+            </script>
 
 
 
